@@ -46,13 +46,9 @@ jobs:
   - task: HelmDeploy@0
     name: Update_version
     inputs:
-      connectionType: 'Kubernetes Service Connection'
-      kubernetesServiceConnection: 'K8s-Cluster-akscluster-bluegreen-1582711316647'
-      command: 'upgrade'
-      chartType: 'FilePath'
+      command: 'package'
       chartPath: 'helm-blue-green/blue-green/Chart.yaml'
-      releaseName: 'bluegreen'
-      overrideValues: '$(color).version=$(version)'
+      chartVersion: '$(version)'
       arguments: '--reuse-values'
   - task: HelmDeploy@0
     name: Update_version
