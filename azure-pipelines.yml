@@ -54,6 +54,17 @@ jobs:
       releaseName: 'bluegreen'
       overrideValues: '$(color).version=$(version)'
       arguments: '--reuse-values'
+  - task: HelmDeploy@0
+    name: Update_version
+    inputs:
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceConnection: 'K8s-Cluster-akscluster-bluegreen-1582711316647'
+      command: 'upgrade'
+      chartType: 'FilePath'
+      chartPath: 'helm-blue-green/blue-green/Chart.yaml'
+      releaseName: 'bluegreen'
+      overrideValues: '$(color).version=$(version)'
+      arguments: '--reuse-values'
   - task: Bash@3
     name: Wait_for_deployment
     inputs:
