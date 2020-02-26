@@ -56,7 +56,7 @@ jobs:
       kubernetesServiceConnection: 'K8s-Cluster-akscluster-bluegreen-1582711316647'
       command: 'upgrade'
       chartType: 'FilePath'
-      chartPath: 'helm-blue-green/blue-green/Chart.yaml'
+      chartPath: './helm-blue-green/blue-green'
       releaseName: 'bluegreen'
       overrideValues: '$(color).version=$(version)'
       arguments: '--reuse-values'
