@@ -44,7 +44,7 @@ jobs:
     name: Update_version
     inputs:
       connectionType: 'Kubernetes Service Connection'
-      kubernetesServiceConnection: 'K8s-Cluster-akscluster-bluegreen-1582711316647'
+      kubernetesServiceConnection: 'KubernetesConnect'
       command: 'upgrade'
       chartType: 'FilePath'
       chartPath: 'helm-blue-green/blue-green/'
@@ -60,7 +60,7 @@ jobs:
     name: Flip_prod
     inputs:
       connectionType: 'Kubernetes Service Connection'
-      kubernetesServiceConnection: 'K8s-Cluster-akscluster-bluegreen-1582711316647'
+      kubernetesServiceConnection: 'KubernetesConnect'
       command: 'upgrade'
       chartType: 'FilePath'
       chartPath: 'helm-blue-green/blue-green/'
