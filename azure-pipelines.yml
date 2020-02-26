@@ -7,9 +7,6 @@
 trigger:
 - master
 
-variables:
-  version: 1
-
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -44,19 +41,13 @@ jobs:
           echo "##vso[task.setvariable variable=color]blue"
         fi
   - task: HelmDeploy@0
-    name: HelmPackage
-    inputs:
-      command: 'package'
-      chartPath: './helm-blue-green/blue-green'
-      save: false
-  - task: HelmDeploy@0
     name: Update_version
     inputs:
       connectionType: 'Kubernetes Service Connection'
       kubernetesServiceConnection: 'K8s-Cluster-akscluster-bluegreen-1582711316647'
       command: 'upgrade'
       chartType: 'FilePath'
-      chartPath: './helm-blue-green/blue-green'
+      chartPath: 'helm-blue-green/blue-green/'
       releaseName: 'bluegreen'
       overrideValues: '$(color).version=$(version)'
       arguments: '--reuse-values'
@@ -72,7 +63,7 @@ jobs:
       kubernetesServiceConnection: 'K8s-Cluster-akscluster-bluegreen-1582711316647'
       command: 'upgrade'
       chartType: 'FilePath'
-      chartPath: 'helm-blue-green/blue-green/Chart.yaml'
+      chartPath: 'helm-blue-green/blue-green/'
       releaseName: 'bluegreen'
       overrideValues: 'production=$(color)'
       arguments: '--reuse-values'
