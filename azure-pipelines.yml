@@ -27,7 +27,7 @@ jobs:
   - task: AzureCLI@2
     name: Get_kubeconfig
     inputs:
-      azureSubscription: 'Microsoft Internal Subscription(1428e18b-8cfb-4b8a-9c6f-4d1d5484852d)'
+      azureSubscription: 'AzureConnect'
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: 'az aks get-credentials -g kubenetescluster -n akscluster'
