@@ -48,6 +48,7 @@ jobs:
     inputs:
       command: 'package'
       chartPath: './helm-blue-green/blue-green'
+      save: false
   - task: HelmDeploy@0
     name: Update_version
     inputs:
