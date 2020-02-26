@@ -6,14 +6,14 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: Update_version
+  steps:
+  - task: HelmInstaller@1
+    inputs:
+      helmVersionToInstall: '3.0.0'
+  - task: HelmDeploy@0
+    inputs:
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceConnection: 'K8s-Cluster-akscluster-bluegreen-1582711316647'
+      command: 'ls'
