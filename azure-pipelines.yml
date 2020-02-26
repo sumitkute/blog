@@ -27,7 +27,7 @@ jobs:
   - task: AzureCLI@2
     name: Get_kubeconfig
     inputs:
-      azureSubscription: 'Microsoft Internal Subscription(1428e18b-8cfb-4b8a-9c6f-4d1d5484852d)'
+      azureSubscription: '8c19dea9-c126-482a-b643-9f54518c3604'
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: 'az aks get-credentials -g KEDA -n nf-keda'
