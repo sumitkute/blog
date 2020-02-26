@@ -41,7 +41,7 @@ jobs:
           echo "##vso[task.setvariable variable=color]blue"
         fi
   - task: HelmDeploy@0
-    name: Update_version
+    name: HelmUpdate
     inputs:
       connectionType: 'Kubernetes Service Connection'
       kubernetesServiceConnection: 'KubernetesConnect'
